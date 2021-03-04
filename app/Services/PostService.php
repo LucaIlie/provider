@@ -3,6 +3,7 @@
 
 namespace App\Services;
 use App\Repositories\PostRepository;
+use Dotenv\Validator;
 
 class PostService
 {
@@ -18,5 +19,16 @@ class PostService
     }
     public function getAll(){
         return $this->postRepository->getAll();
+    }
+    public function savePostData($data){
+        $valid = Validator::make($data,[
+           'title' => 'required',
+           'content' => 'required'
+        ]);
+        if ($valid->fails()){
+            throw new \InvalidArgumentException ($valid->errors()->first());
+        }
+        $result = $this->postRepository-save($data);
+        return $result;
     }
 }

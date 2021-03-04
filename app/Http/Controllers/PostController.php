@@ -23,9 +23,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = $this->postService->getAll();
-        dd($post);
-        return view('posts.index',);
+
+        return view('posts.index',['post'=>
+            $this->postService->getAll()];
+
     }
 
     /**
@@ -35,7 +36,7 @@ class PostController extends Controller
      */
     public function create()
     {
-
+        return view('posts.create');
     }
 
     /**
@@ -46,7 +47,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data =$request->only([
+            'title' , 'content'
+        ]);
+        $this->postService->savePostData($data);
     }
 
     /**
