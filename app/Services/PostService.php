@@ -16,4 +16,7 @@ class PostService
     {
         $this->postRepository = $postRepository;
     }
+    public function getAll(){
+        return $this->postRepository->getAll();
+    }
 }

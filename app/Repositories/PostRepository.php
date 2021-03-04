@@ -17,4 +17,7 @@ class PostRepository
     {
         $this->post = $post;
     }
+    public function getAll(){
+        return $this->post->get();
+    }
 }

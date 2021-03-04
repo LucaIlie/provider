@@ -23,7 +23,9 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        $post = $this->postService->getAll();
+        dd($post);
+        return view('posts.index',);
     }
 
     /**
