@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Services\PostService;
 
 class PostController extends Controller
 {
+    protected $postService;/**
+ * PostController constructor.
+ * @param $postService
+ *
+ */public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
